@@ -1,0 +1,2 @@
+sudo chmod a+rw result/*
+/usr/local/bin/qemu-system-x86_64 -m 8G,maxmem=10G --drive format=raw,file=result/nixos.img  -device ivshmem-plain,memdev=hostmem -object memory-backend-file,size=16M,share=on,mem-path=/dev/shm/ivshmem,id=hostmem -object memory-backend-file,id=mem1,share=on,mem-path=./virtio_pmem.img,size=13M -device virtio-pmem-pci,memdev=mem1,id=mem1
